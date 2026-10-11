@@ -1,7 +1,9 @@
 # Python Data Scripts
 
-Python scripts built and deployed against live data for real business 
+Python scripts built and deployed against live data for real business
 operations.
+
+**What this demonstrates:** turning a manual POS export into a repeatable cleaning and reconciliation step, used in production for a real business.
 
 ---
 
@@ -9,17 +11,18 @@ operations.
 
 **Python · Pandas · Deployed at Discover Diving (2022)**
 
-Aggregates transaction data exported from a POS system, calculates 
-spend-based loyalty points at 2.5% of net sales, and reconciles balances 
-across the full customer database. Output is a cleaned CSV ready to import 
+Aggregates transaction data exported from a POS system, calculates
+spend-based loyalty points at 2.5% of net sales, and reconciles balances
+across the full customer database. Output is a cleaned CSV ready to import
 back into the POS.
 
 ### What it does
 
 - Ingests a receipts export and existing customer database as CSVs
 - Deduplicates customers and aggregates total spend and visit count
-- Calculates points balance at 2.5% of net sales per customer
-- Reconciles against the existing customer file — updates known customers, 
+- Calculates each customer's points balance at 2.5% of net sales for the
+  export period — this replaces the existing balance rather than adding to it
+- Reconciles against the existing customer file — updates known customers,
   zeros out anyone with no recent transactions
 - Exports an updated customer CSV ready for POS import
 
@@ -48,7 +51,7 @@ back into the POS.
 
 ### Output
 
-`customerUpdatedPoints.csv` — full customer database with recalculated 
+`customerUpdatedPoints.csv` — full customer database with recalculated
 points balances.
 
 ### Setup
